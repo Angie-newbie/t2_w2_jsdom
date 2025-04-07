@@ -7,7 +7,7 @@ const data = [
     'Ghost Face'
 ]
 
-function addCostumeToList() {
+function addCostumeToList(costume) {
     const ul = document.querySelector('#costumeContainer ul')
     // create an <li> using costume
     const newLi = document.createElement('li')
@@ -37,13 +37,14 @@ function addCostumeToList() {
 
 
 //Ilterate over data
-for (costume of data) {
+for (let costume of data) {
     // ul.innerHTML += `
     //     <li>
     //         ${costume}
     //         <button>Remove ${costume} </button>
     //     </li>
     //     `
+    addCostumeToList(costume)
     
 
 
@@ -53,6 +54,11 @@ for (costume of data) {
 document.querySelector(`#newCostumeForm`).addEventListener('submit', (event) => {
 
     event.preventDefault()
-    console.log('Form submit')
+    // Get costume from form input
+    const newCostumeInput = document.querySelector(`#newCostumeForm input`)
+    const costume = newCostumeInput.value
+    // Add the new costume to the list
+    addCostumeToList(costume)
+    newCostumeInput.value = ''
 
 })
